@@ -1,7 +1,7 @@
 from coleta.soccer_stats import scrap_soccer_data
 
 def main():
-  PASTA_DESTINO = "./arquivos"
+  PASTA_DESTINO = "./tmp"
   
   urls = [
     "https://fbref.com/en/comps/24/Serie-A-Stats"
