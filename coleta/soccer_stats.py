@@ -53,7 +53,206 @@ def scrap_soccer_data(urls, pasta_destino):
           if header_squad_standard_stats_opponent and body_squad_standard_stats_opponent:
             nome_arquivo = os.path.join(pasta_destino, 'squad_standard_stats_opponent_serie_a.csv')
             salvar_em_csv(nome_arquivo, header_squad_standard_stats_opponent, body_squad_standard_stats_opponent)
-    
+            
+        goalkeeping_stats = soup.find('div', id='div_stats_squads_keeper_for')
+        if goalkeeping_stats:
+          goalkeeping_stats_squad_table = goalkeeping_stats.find('table')
+          
+          header_goalkeeping_stats_squad_table, data_goalkeeping_stats_squad_table = get_header_and_body_and_remove_header_options(goalkeeping_stats_squad_table, 4)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'goalkeeping_stats_squad_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_goalkeeping_stats_squad_table, data_goalkeeping_stats_squad_table)
+          
+        header_xpath_goalkeeping_stats_squad_opponent_table = '//*[@id="div_stats_squads_keeper_against"]//thead/tr/th'
+        body_xpath_goalkeeping_stats_squad_opponent_table = '//*[@id="div_stats_squads_keeper_against"]//tbody/tr'
+        
+        if header_xpath_goalkeeping_stats_squad_opponent_table and body_xpath_goalkeeping_stats_squad_opponent_table:
+          header_goalkeeping_stats_squad_opponent, body_goalkeeping_stats_squad_opponent = get_header_and_body_by_xpath_with_more_elements(header_xpath_goalkeeping_stats_squad_opponent_table, body_xpath_goalkeeping_stats_squad_opponent_table, xpath_html, 4)
+          
+          if header_goalkeeping_stats_squad_opponent and body_goalkeeping_stats_squad_opponent:
+            nome_arquivo = os.path.join(pasta_destino, 'goalkeeping_stats_squad_opponent_serie_a.csv')
+            salvar_em_csv(nome_arquivo, header_goalkeeping_stats_squad_opponent, body_goalkeeping_stats_squad_opponent)
+            
+        squad_advanced_goalkeeping_stats = soup.find('div', id='div_stats_squads_keeper_adv_for')
+        if squad_advanced_goalkeeping_stats:
+          squad_advanced_goalkeeping_stats_squad_table = squad_advanced_goalkeeping_stats.find('table')
+          
+          header_squad_advanced_goalkeeping_stats_squad_table, data_squad_advanced_goalkeeping_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_goalkeeping_stats_squad_table, 8)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_goalkeeping_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_goalkeeping_stats_squad_table, data_squad_advanced_goalkeeping_stats_squad_table)
+          
+        squad_advanced_goalkeeping_opponent_stats = soup.find('div', id='div_stats_squads_keeper_adv_against')
+        if squad_advanced_goalkeeping_opponent_stats:
+          squad_advanced_goalkeeping_opponent_stats_squad_table = squad_advanced_goalkeeping_opponent_stats.find('table')
+          
+          header_squad_advanced_goalkeeping_opponent_stats_squad_table, data_squad_advanced_goalkeeeping_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_goalkeeping_opponent_stats_squad_table, 8)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_goalkeeping_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_goalkeeping_opponent_stats_squad_table, data_squad_advanced_goalkeeeping_opponent_stats_squad_table)
+          
+        squad_advanced_shooting_stats = soup.find('div', id='div_stats_squads_shooting_for')
+        if squad_advanced_shooting_stats:
+          squad_advanced_shooting_stats_squad_table = squad_advanced_shooting_stats.find('table')
+          
+          header_squad_advanced_shooting_stats_squad_table, data_squad_advanced_shooting_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_shooting_stats_squad_table, 3)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_shooting_stats_squad_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_shooting_stats_squad_table, data_squad_advanced_shooting_stats_squad_table)
+          
+        squad_advanced_shooting_opponent_stats = soup.find('div', id='div_stats_squads_shooting_against')
+        if squad_advanced_shooting_opponent_stats:
+          squad_advanced_shooting_opponent_stats_squad_table = squad_advanced_shooting_opponent_stats.find('table')
+          
+          header_squad_advanced_shooting_opponent_stats_squad_table, data_squad_advanced_shooting_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_shooting_opponent_stats_squad_table, 3)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_shooting_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_shooting_opponent_stats_squad_table, data_squad_advanced_shooting_opponent_stats_squad_table)
+          
+        squad_advanced_passing_stats = soup.find('div', id='div_stats_squads_passing_for')
+        if squad_advanced_passing_stats:
+          squad_advanced_passing_stats_squad_table = squad_advanced_passing_stats.find('table')
+          
+          header_squad_advanced_passing_stats_squad_table, data_squad_advanced_passing_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_passing_stats_squad_table, 8)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_passing_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_passing_stats_squad_table, data_squad_advanced_passing_stats_squad_table)
+          
+        squad_advanced_passing_opponent_stats = soup.find('div', id='div_stats_squads_passing_against')
+        if squad_advanced_passing_opponent_stats:
+          squad_advanced_passing_opponent_stats_squad_table = squad_advanced_passing_opponent_stats.find('table')
+          
+          header_squad_advanced_passing_opponent_stats_squad_table, data_squad_advanced_passing_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_passing_opponent_stats_squad_table, 8)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_passing_opponent_squad_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_passing_opponent_stats_squad_table, data_squad_advanced_passing_opponent_stats_squad_table)
+          
+        squad_advanced_passing_types_stats = soup.find('div', id='div_stats_squads_passing_types_for')
+        if squad_advanced_passing_types_stats:
+          squad_advanced_passing_types_stats_squad_table = squad_advanced_passing_types_stats.find('table')
+          
+          header_squad_advanced_passing_types_stats_squad_table, data_squad_advanced_passing_types_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_passing_types_stats_squad_table, 4)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_passing_types_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_passing_types_stats_squad_table, data_squad_advanced_passing_types_stats_squad_table)
+          
+        squad_advanced_passing_types_opponent_stats = soup.find('div', id='div_stats_squads_passing_types_against')
+        if squad_advanced_passing_types_opponent_stats:
+          squad_advanced_passing_types_opponent_stats_squad_table = squad_advanced_passing_types_opponent_stats.find('table')
+          
+          header_squad_advanced_passing_types_opponent_stats_squad_table, data_squad_advanced_passing_types_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_passing_types_opponent_stats_squad_table, 4)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_passing_types_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_passing_types_opponent_stats_squad_table, data_squad_advanced_passing_types_opponent_stats_squad_table)
+          
+        squad_advanced_gca_stats = soup.find('div', id='div_stats_squads_gca_for')
+        if squad_advanced_gca_stats:
+          squad_advanced_gca_stats_squad_table = squad_advanced_gca_stats.find('table')
+          
+          header_squad_advanced_gca_stats_squad_table, data_squad_advanced_gca_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_gca_stats_squad_table, 5)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_gca_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_gca_stats_squad_table, data_squad_advanced_gca_stats_squad_table)
+          
+        squad_advanced_gca_opponent_stats = soup.find('div', id='div_stats_squads_gca_against')
+        if squad_advanced_gca_opponent_stats:
+          squad_advanced_gca_opponent_stats_squad_table = squad_advanced_gca_opponent_stats.find('table')
+          
+          header_squad_advanced_gca_opponent_stats_squad_table, data_squad_advanced_gca_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_gca_opponent_stats_squad_table, 5)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_gca_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_gca_opponent_stats_squad_table, data_squad_advanced_gca_opponent_stats_squad_table)
+          
+        squad_advanced_defense_stats = soup.find('div', id='div_stats_squads_defense_for')
+        if squad_advanced_defense_stats:
+          squad_advanced_defense_stats_squad_table = squad_advanced_defense_stats.find('table')
+          
+          header_squad_advanced_defense_stats_squad_table, data_squad_advanced_defense_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_defense_stats_squad_table, 5)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_defense_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_defense_stats_squad_table, data_squad_advanced_defense_stats_squad_table)
+          
+        squad_advanced_defense_opponent_stats = soup.find('div', id='div_stats_squads_defense_against')
+        if squad_advanced_defense_opponent_stats:
+          squad_advanced_defense_opponent_stats_squad_table = squad_advanced_defense_opponent_stats.find('table')
+          
+          header_squad_advanced_defense_opponent_stats_squad_table, data_squad_advanced_defense_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_defense_opponent_stats_squad_table, 5)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_defense_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_defense_opponent_stats_squad_table, data_squad_advanced_defense_opponent_stats_squad_table)
+          
+        squad_advanced_possession_stats = soup.find('div', id='div_stats_squads_possession_for')
+        if squad_advanced_possession_stats:
+          squad_advanced_possession_stats_squad_table = squad_advanced_possession_stats.find('table')
+          
+          header_squad_advanced_possession_stats_squad_table, data_squad_advanced_possession_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_possession_stats_squad_table, 5)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_possession_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_possession_stats_squad_table, data_squad_advanced_possession_stats_squad_table)
+          
+        squad_advanced_possession_opponent_stats = soup.find('div', id='div_stats_squads_possession_against')
+        if squad_advanced_possession_opponent_stats:
+          squad_advanced_possession_opponent_stats_squad_table = squad_advanced_possession_opponent_stats.find('table')
+          
+          header_squad_advanced_possession_opponent_stats_squad_table, data_squad_advanced_possession_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_possession_opponent_stats_squad_table, 5)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_possession_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_possession_opponent_stats_squad_table, data_squad_advanced_possession_opponent_stats_squad_table)
+          
+        squad_advanced_playing_time_stats = soup.find('div', id='div_stats_squads_playing_time_for')
+        if squad_advanced_playing_time_stats:
+          squad_advanced_playing_time_stats_squad_table = squad_advanced_playing_time_stats.find('table')
+          
+          header_squad_advanced_playing_time_stats_squad_table, data_squad_advanced_playing_time_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_playing_time_stats_squad_table, 6)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_playing_time_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_playing_time_stats_squad_table, data_squad_advanced_playing_time_stats_squad_table)
+          
+        squad_advanced_playing_time_opponent_stats = soup.find('div', id='div_stats_squads_playing_time_against')
+        if squad_advanced_playing_time_opponent_stats:
+          squad_advanced_playing_time_opponent_stats_squad_table = squad_advanced_playing_time_opponent_stats.find('table')
+          
+          header_squad_advanced_playing_time_opponent_stats_squad_table, data_squad_advanced_playing_time_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_playing_time_opponent_stats_squad_table, 6)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_playing_time_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_playing_time_opponent_stats_squad_table, data_squad_advanced_playing_time_opponent_stats_squad_table)
+          
+        squad_advanced_misc_stats = soup.find('div', id='div_stats_squads_misc_for')
+        if squad_advanced_misc_stats:
+          squad_advanced_misc_stats_squad_table = squad_advanced_misc_stats.find('table')
+          
+          header_squad_advanced_misc_stats_squad_table, data_squad_advanced_misc_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_misc_stats_squad_table, 3)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_misc_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_misc_stats_squad_table, data_squad_advanced_misc_stats_squad_table)
+          
+        squad_advanced_misc_opponent_stats = soup.find('div', id='div_stats_squads_misc_against')
+        if squad_advanced_misc_opponent_stats:
+          squad_advanced_misc_opponent_stats_squad_table = squad_advanced_misc_opponent_stats.find('table')
+          
+          header_squad_advanced_misc_opponent_stats_squad_table, data_squad_advanced_misc_opponent_stats_squad_table = get_header_and_body_and_remove_header_options(squad_advanced_misc_opponent_stats_squad_table, 3)
+            
+          nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_misc_opponent_stats_serie_a.csv')
+
+          salvar_em_csv(nome_arquivo, header_squad_advanced_misc_opponent_stats_squad_table, data_squad_advanced_misc_opponent_stats_squad_table)
 
 def get_header_and_body(table):
   header = []
