@@ -253,7 +253,7 @@ def scrap_soccer_data(urls, pasta_destino):
           nome_arquivo = os.path.join(pasta_destino, 'squad_advanced_misc_opponent_stats_serie_a.csv')
 
           salvar_em_csv(nome_arquivo, header_squad_advanced_misc_opponent_stats_squad_table, data_squad_advanced_misc_opponent_stats_squad_table)
-
+          
 def get_header_and_body(table):
   header = []
   dados_linhas = []
